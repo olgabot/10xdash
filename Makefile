@@ -29,3 +29,6 @@ FLAGS+= $(CXXFLAGS) -fopenmp
 %: src/%.cpp $(OBJ)
 	$(CXX)  $(OBJ) $< -o $@ $(INCLUDE) $(FLAGS) $(LD) $(LIB)
 
+update:
+	+git submodule update --init --remote --recursive . && cd bonsai && git checkout master && git pull && make update && \
+    cd linear && git checkout master && git pull && cd .. && cd .. && cd distmat && git checkout master && git pull && cd ..
